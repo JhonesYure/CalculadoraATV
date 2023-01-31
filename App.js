@@ -52,6 +52,11 @@ export default function App() {
         calculator()
         return
       case '+/-':
+        if(currentNumber > 0){
+          setCurrentNumber(currentNumber * -1) 
+        }else{
+          setCurrentNumber(Math.abs(currentNumber)) 
+        }
         return
     }
 
