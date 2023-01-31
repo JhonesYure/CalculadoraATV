@@ -33,6 +33,41 @@ export default function App() {
     }
   }
 
+   // porcentagem
+
+   function CalcularPorcentagem(){
+
+    const splitNumbers = currentNumber.split(' ')
+    const fistNumber = parseFloat(splitNumbers[0]) 
+    const operator = splitNumbers[1]
+    const lastNumber = parseFloat(splitNumbers[2])
+    const porcentagemMaisMenos = (fistNumber * lastNumber)/100
+    const porcentagemMultDiv = lastNumber / 100
+    
+    
+    // Faz ação referente tecla pressionada
+
+    switch(operator ){
+      case '+':
+        setCurrentNumber( ( (fistNumber + porcentagemMaisMenos ) ).toString())
+        return
+      case '-': 
+        setCurrentNumber((fistNumber - porcentagemMaisMenos).toString())
+        return
+      case 'x':
+        setCurrentNumber(( porcentagemMultDiv * fistNumber ).toString()) // aqui de
+        return
+      case '/': 
+        setCurrentNumber((fistNumber/porcentagemMultDiv).toString())
+        return
+     
+          
+        }
+
+  }
+
+  // fim porcentagem
+
   function handleInput(buttonPressed){
     console.log(buttonPressed) // Mostra no Console a tecla pressionada
     if(buttonPressed === '+' | buttonPressed === "-" | buttonPressed === "x" | buttonPressed === "/" ){
@@ -58,6 +93,10 @@ export default function App() {
           setCurrentNumber(Math.abs(currentNumber)) 
         }
         return
+        case '%':
+          setLastNumber(currentNumber + "%")
+          CalcularPorcentagem()
+          return
     }
 
     setCurrentNumber(currentNumber + buttonPressed)
